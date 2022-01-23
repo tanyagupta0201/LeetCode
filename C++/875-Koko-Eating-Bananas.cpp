@@ -1,6 +1,8 @@
-// Problem Link: https://github.com/tanyagupta0201/6Companies30Days
+// Problem Link: https://leetcode.com/problems/koko-eating-bananas/
 
 // YouTube Link: https://youtu.be/LzZFUTWE55c
+
+// Binary Search
 
 class Solution
 {
