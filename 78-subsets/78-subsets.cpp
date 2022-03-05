@@ -1,29 +1,29 @@
 class Solution {
 public:
-    
-    void AllSubsets(int i, vector<int> &nums, int n, vector<int>output, vector<vector<int>> &final)
+    void generateSubsets(int idx, vector<int> ans, vector<int> nums, vector<vector<int>> &res)
     {
-        // Base Condition
-        if(i == n)
+        if(idx == nums.size())
         {
-            final.push_back(output);
+            res.push_back(ans);
             return;
         }
         
-        // Excluding the current number
-        AllSubsets(i + 1, nums, n, output, final);
+        // Pick a number
+        ans.push_back(nums[idx]);
+        generateSubsets(idx + 1, ans, nums, res);
+        ans.pop_back();
         
-        // Including the current number
-        output.push_back(nums[i]);
-        AllSubsets(i + 1, nums, n, output, final);        
-
+        // Do not pick a number
+        generateSubsets(idx + 1, ans, nums, res);
     }
     
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<int> output;
-        vector<vector<int>> final;
+    vector<vector<int>> subsets(vector<int>& nums)
+    {
+        vector<int> ans;
+        vector<vector<int>> res;
         
-        AllSubsets(0, nums, nums.size(), output, final);
-        return final;
+        generateSubsets(0, ans, nums, res);
+        
+        return res;
     }
 };
