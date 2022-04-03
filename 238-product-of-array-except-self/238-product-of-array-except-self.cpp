@@ -29,3 +29,37 @@ public:
         return nums;
     }
 }; 
+
+
+
+// SOLUTION 2
+// Without using extra space
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) 
+    {
+        int n = nums.size();
+        vector<int> prod(n, 1);
+        
+        int temp = 1;
+        
+        // In this loop, temp variable contains product of elements on left side excluding nums[i]
+        for(int i = 0; i < n; i++)
+        {
+            prod[i] *= temp;
+            temp *= nums[i];
+        }
+        
+        temp = 1;
+ 
+       // In this loop, temp variable contains product of elements on right side excluding nums[i] 
+       for (int i = n - 1; i >= 0; i--)
+       {
+            prod[i] *= temp;
+            temp *= nums[i];
+       }
+ 
+        return prod;
+    }
+};
